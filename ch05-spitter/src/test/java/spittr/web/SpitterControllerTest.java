@@ -29,7 +29,7 @@ public class SpitterControllerTest {
     Spitter unsaved = new Spitter("jbauer", "24hours", "Jack", "Bauer", "jbauer@ctu.gov");
     Spitter saved = new Spitter(24L, "jbauer", "24hours", "Jack", "Bauer", "jbauer@ctu.gov");
     when(mockRepository.save(unsaved)).thenReturn(saved);
-    
+
     SpitterController controller = new SpitterController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
 
@@ -40,22 +40,7 @@ public class SpitterControllerTest {
            .param("password", "24hours")
            .param("email", "jbauer@ctu.gov"))
            .andExpect(redirectedUrl("/spitter/jbauer"));
-    
+
     verify(mockRepository, atLeastOnce()).save(unsaved);
   }
-
-  @Test
-  public void shouldFailValidationWithNoData() throws Exception {
-    SpitterRepository mockRepository = mock(SpitterRepository.class);    
-    SpitterController controller = new SpitterController(mockRepository);
-    MockMvc mockMvc = standaloneSetup(controller).build();
-    
-    mockMvc.perform(post("/spitter/register"))
-        .andExpect(status().isOk())
-        .andExpect(view().name("registerForm"))
-        .andExpect(model().errorCount(5))
-        .andExpect(model().attributeHasFieldErrors(
-            "spitter", "firstName", "lastName", "username", "password", "email"));
-  }
-
 }

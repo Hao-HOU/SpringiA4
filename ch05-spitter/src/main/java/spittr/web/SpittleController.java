@@ -19,7 +19,7 @@ import spittr.data.SpittleRepository;
 public class SpittleController {
 
   private static final String MAX_LONG_AS_STRING = "9223372036854775807";
-  
+
   private SpittleRepository spittleRepository;
 
   @Autowired
@@ -36,7 +36,7 @@ public class SpittleController {
 
   @RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
   public String spittle(
-      @PathVariable("spittleId") long spittleId, 
+      @PathVariable("spittleId") long spittleId,
       Model model) {
     model.addAttribute(spittleRepository.findOne(spittleId));
     return "spittle";
@@ -44,7 +44,7 @@ public class SpittleController {
 
   @RequestMapping(method=RequestMethod.POST)
   public String saveSpittle(SpittleForm form, Model model) throws Exception {
-    spittleRepository.save(new Spittle(null, form.getMessage(), new Date(), 
+    spittleRepository.save(new Spittle(null, form.getMessage(), new Date(),
         form.getLongitude(), form.getLatitude()));
     return "redirect:/spittles";
   }

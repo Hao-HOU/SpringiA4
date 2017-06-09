@@ -60,11 +60,11 @@ public class JdbcSpittleRepository implements SpittleRepository {
     public Spittle mapRow(ResultSet rs, int rowNum) throws SQLException {
       return new Spittle(
           rs.getLong("id"),
-          rs.getString("message"), 
-          rs.getDate("created_at"), 
-          rs.getDouble("longitude"), 
+          rs.getString("message"),
+          rs.getDate("created_at"),
+          rs.getDouble("longitude"),
           rs.getDouble("latitude"));
     }
   }
-  
+
 }

@@ -12,7 +12,7 @@ import spittr.Spitter;
 
 @Repository
 public class JdbcSpitterRepository implements SpitterRepository {
-  
+
   private JdbcOperations jdbc;
 
   @Autowired
@@ -34,11 +34,11 @@ public class JdbcSpitterRepository implements SpitterRepository {
 
   public Spitter findByUsername(String username) {
     return jdbc.queryForObject(
-        "select id, username, null, first_name, last_name, email from Spitter where username=?", 
-        new SpitterRowMapper(), 
+        "select id, username, null, first_name, last_name, email from Spitter where username=?",
+        new SpitterRowMapper(),
         username);
   }
-  
+
   private static class SpitterRowMapper implements RowMapper<Spitter> {
     public Spitter mapRow(ResultSet rs, int rowNum) throws SQLException {
       return new Spitter(
