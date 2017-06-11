@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 /**
  * Created by Hao HOU on 2017/6/11.
  */
@@ -18,7 +20,9 @@ public class FileUploadController {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String processUpload(@RequestPart("file") MultipartFile file) {
+    public String processUpload(@RequestPart("file") MultipartFile file) throws Exception{
+
+        file.transferTo(new File("/tmp/spittr/" + file.getOriginalFilename()));
 
         System.out.println(file.getSize());
 

@@ -42,3 +42,11 @@ body {
 .spittleForm h1 {
 	font-size: 16pt;
 }
+
+.errors {
+	color: red;
+}
+
+.error {
+	color: red;
+}

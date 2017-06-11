@@ -29,9 +29,10 @@ public class SpittleController {
     public List<Spittle> spittles(
             @RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
             @RequestParam(value = "count", defaultValue = "20") int count) {
-        return spittleRepository.findRecentSpittles();
+        return spittleRepository.findRecentSpittles();//TODO 不能使用findSpittles()
     }
 
+    //TODO 该方法报错
     @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
     public String spittle(
             @PathVariable("spittleId") long spittleId,

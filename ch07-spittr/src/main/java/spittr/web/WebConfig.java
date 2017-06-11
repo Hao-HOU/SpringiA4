@@ -5,7 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -29,6 +28,9 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     public ViewResolver viewResolver(SpringTemplateEngine templateEngine) {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine);
+        viewResolver.setCharacterEncoding("UTF-8");
+        viewResolver.setOrder(1);
+        viewResolver.setCache(false);
         return viewResolver;
     }
 
