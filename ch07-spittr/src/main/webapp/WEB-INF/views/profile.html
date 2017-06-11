@@ -9,12 +9,8 @@
 <div id="header" th:include="page :: header"></div>
 
 <div id="content">
-    <h1>Welcome to Spittr</h1>
-
-    <a th:href="@{/spittles}">Spittles</a> |
-    <a th:href="@{/spitter/register}">Register</a>
-    <br/>
+    <h1>Your Profile</h1>
+    <span th:text="${spitter.username}">username</span>
 </div>
-<div id="footer" th:include="page :: copy"></div>
 </body>
 </html>

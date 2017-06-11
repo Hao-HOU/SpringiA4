@@ -3,6 +3,7 @@ package spittr.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 import spittr.Spittle;
 
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by Hao HOU on 2017/6/11.
  */
+@Repository
 public class JdbcSpittleRepository implements SpittleRepository {
     private JdbcOperations jdbc;
 
